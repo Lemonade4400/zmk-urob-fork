@@ -26,6 +26,8 @@ manifest:
       url-base: https://github.com/urob
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
+    - name: gpeye                   
+      url-base: https://github.com/GPeye # https://github.com/GPeye/hammerbeam-slideshow
 
   projects:
     - name: zmk
@@ -43,6 +45,9 @@ manifest:
       path: modules/zmk/leader-key
     - name: zmk-tri-state
       path: modules/zmk/tri-state
+    - name: hammerbeam-slideshow        
+      remote: gpeye                     
+      revision: main      
 
     # Temporarily overload Zephyr until
     # https://github.com/zmkfirmware/zephyr/pull/40 is merged.
