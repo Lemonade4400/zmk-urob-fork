@@ -101,7 +101,7 @@ ZMK_TRI_STATE(c_swapper,
 #include "my-macros.dtsi" // some combos uses my-macros so it must be sourced before combos.dtsi
 
 #include "combos.dtsi"  // must be sources after HRM-combo hack
-#include "leader.dtsi"
+// #include "leader.dtsi" // edit: leader disabled
 #include "mouse.dtsi"
 #include "extra_keys.h"
 
@@ -236,7 +236,7 @@ ZMK_MACRO(win_sleep,
 )
 
 // Sticky shift + leader
-ZMK_MACRO(leader_sft, bindings = <&sk LSHFT &leader>;)
+// ZMK_MACRO(leader_sft, bindings = <&sk LSHFT &leader>;) // edit: leader disabled
 
 // misc aliases
 #define CANCEL      &kp K_CANCEL             // cancel caps-word, num-word and smart-mouse
@@ -344,7 +344,7 @@ ZMK_LAYER(code,
 ZMK_LAYER(accents,
 //╭────────────────╮ ╭────────────────┬────────────────┬────────────────┬────────────────┬────────────────╮          ╭────────────────┬────────────────┬────────────────┬────────────────┬────────────────╮ ╭────────────────╮
         ___             ___              ___              &e_accent        ___              ___                        ___              &u_accent        &i_accent        &o_accent        ___                  ___
-//├────────────────┤ ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤          ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤ ├────────────────┤
+//├────────────────┤ ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤          ├────────────────┼──`──────────────┼────────────────┼────────────────┼────────────────┤ ├────────────────┤
         ___             &a_accent        ___              ___              ___              ___                        ___              ___              ___              ___              ___                  ___
 //├────────────────┤ ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤          ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤ ├────────────────┤
         ___             ___              ___              ___              ___              ___                        ___              ___              ___              ___              ___                  ___
