@@ -121,3 +121,16 @@ ZMK_MACRO(toggle_editor_size,           // maximize or restore the editor
         <&macro_release &kp LALT>,
         <&macro_release &kp LCTRL>;
 ) 
+
+ZMK_MACRO(focus_chat,                   // focus the chat panel
+    wait-ms = <0>;
+    tap-ms = <10>;
+    bindings = 
+        <&macro_press &kp LCTRL>,
+        <&macro_press &kp LALT>,
+        <&macro_press &kp LSHFT>,
+        <&macro_tap &kp Q>,
+        <&macro_release &kp LSHFT>,
+        <&macro_release &kp LALT>,
+        <&macro_release &kp LCTRL>;
+) 
