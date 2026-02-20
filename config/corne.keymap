@@ -106,6 +106,13 @@ ZMK_TRI_STATE(c_swapper,
 #include "mouse.dtsi"
 #include "extra_keys.h"
 
+// Password macro (generated at build time in private repo)
+#if __has_include("password-macro.dtsi")
+    #include "password-macro.dtsi"
+#else
+    ZMK_MACRO(type_password, bindings = <&none>;)
+#endif
+
 /* Nav cluster */
 
 // long-tap action on hold, short-tap action on all interrupts
@@ -277,7 +284,7 @@ ZMK_LAYER(fn,
 //├────────────────┤ ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤          ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤ ├────────────────┤
         ___             &kp F10          &kp F1           &kp F2           &kp F3           DSK_MGR                    &kp PRINTSCREEN  &kp K_CMENU      PIN_WIN          DSK_PREV         DSK_NEXT             &kp C_MUTE
 //╰────────────────╯ ╰────────────────┼────────────────┴────────────────┼────────────────┼────────────────┤          ├────────────────┼────────────────┼────────────────┴────────────────┴────────────────╯ ╰────────────────╯
-                                                         ___              ___              ___                         DSK_NEXT         &kp C_PP         ___                                            
+                                                         ___              ___              ___                         DSK_NEXT         &kp C_PP         &type_password                                            
 //                                                     ╰────────────────┴────────────────┴────────────────╯          ╰────────────────┴────────────────┴────────────────╯ 
 )
     

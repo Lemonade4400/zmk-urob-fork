@@ -6,3 +6,6 @@ firmware
 zephyr
 zmk
 draw/base.yaml
+
+# Generated at build time (never commit)
+config/password-macro.dtsi
