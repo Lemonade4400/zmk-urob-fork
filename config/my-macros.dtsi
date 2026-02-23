@@ -17,6 +17,12 @@ ZMK_MACRO(four_down,
     bindings = <&kp DOWN &kp DOWN &kp DOWN &kp DOWN>;
 )
 
+ZMK_MACRO(five_down,
+    wait-ms = <0>;
+    tap-ms = <5>;
+    bindings = <&kp DOWN &kp DOWN &kp DOWN &kp DOWN &kp DOWN>;
+)
+
 ZMK_MACRO(double_up,
     wait-ms = <0>;
     tap-ms = <5>;
@@ -33,6 +39,12 @@ ZMK_MACRO(four_up,
     wait-ms = <0>;
     tap-ms = <5>;
     bindings = <&kp UP &kp UP &kp UP &kp UP>;
+)
+
+ZMK_MACRO(five_up,
+    wait-ms = <0>;
+    tap-ms = <5>;
+    bindings = <&kp UP &kp UP &kp UP &kp UP &kp UP>;
 )
 
 ZMK_MACRO(one_left,

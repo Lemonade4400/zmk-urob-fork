@@ -125,11 +125,13 @@ ZMK_TRI_STATE(c_swapper,
 &mt { MT_CORE };
 ZMK_HOLD_TAP(mt_home, bindings = <&masked_home>, <&kp>; MT_CORE)
 ZMK_HOLD_TAP(mt_end, bindings = <&masked_end>, <&kp>; MT_CORE)
+ZMK_HOLD_TAP(mt_five_up, bindings = <&five_up>, <&kp>; MT_CORE)
+ZMK_HOLD_TAP(mt_five_down, bindings = <&five_down>, <&kp>; MT_CORE)
 
 #define NAV_LEFT  &mt_home 0   LEFT    // tap: left  | long-tap: beginning of line
 #define NAV_RIGHT &mt_end 0    RIGHT   // tap: right | long-tap: end       of line
-#define NAV_UP    &mt LC(HOME) UP      // tap: up    | long-tap: beginning of document
-#define NAV_DOWN  &mt LC(END)  DOWN    // tap: down  | long-tap: end       of document
+#define NAV_UP    &mt_five_up 0   UP      // tap: up    | long-tap: 5 lines up
+#define NAV_DOWN  &mt_five_down 0 DOWN    // tap: down  | long-tap: 5 lines down
 #define NAV_BSPC  &mt LC(BSPC) BSPC    // tap: bspc  | long-tap: delete word backward
 #define NAV_DEL   &mt LC(DEL)  DEL     // tap: del   | long-tap: delete word forward
 
@@ -266,9 +268,9 @@ ZMK_LAYER(base,
     
 ZMK_LAYER(nav,
 //╭────────────────╮ ╭────────────────┬────────────────┬────────────────┬────────────────┬────────────────╮          ╭────────────────┬────────────────┬────────────────┬────────────────┬────────────────╮ ╭────────────────╮
-        ___             ___              &back            &swapper         &forward         ___                        &triple_left     &double_up       &kp UP           ___              &kp PG_UP          &bspc_two_words
+        ___             ___              &back            &swapper         &forward         ___                        &triple_left     &double_up       NAV_UP           ___              &kp PG_UP          &bspc_two_words
 //├────────────────┤ ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤          ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤ ├────────────────┤
-        ___             &sk LGUI         &sk LALT         &kp LCTRL        &sk LSHFT        &smart_mouse               &one_left        NAV_LEFT         &kp DOWN         NAV_RIGHT        &one_right           ___
+        ___             &sk LGUI         &sk LALT         &kp LCTRL        &sk LSHFT        &smart_mouse               &one_left        NAV_LEFT         NAV_DOWN         NAV_RIGHT        &one_right           ___
 //├────────────────┤ ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤          ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤ ├────────────────┤
         ___             ___              &sk INS          &mo SPEED        &mo SPEED        ___                        &four_left       &double_down     &triple_down     &four_right      &kp PG_DN            ___
 //╰────────────────╯ ╰────────────────┼────────────────┴────────────────┼────────────────┼────────────────┤          ├────────────────┼────────────────┼────────────────┴────────────────┴────────────────╯ ╰────────────────╯
