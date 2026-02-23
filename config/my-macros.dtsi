@@ -198,6 +198,7 @@ ZMK_TAP_DANCE(less_greater,
     bindings = <&kp LS(COMMA)>, <&kp LS(DOT)>;
 )
 
+// not used!
 ZMK_MACRO(select_line,
     wait-ms = <0>;
     tap-ms = <5>;
