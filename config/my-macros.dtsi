@@ -178,12 +178,12 @@ ZMK_MACRO(u_accent,
 
 ZMK_TAP_DANCE(e_tap_dance,
     tapping-term-ms = <200>;
-    bindings = <&kp F8>, <&e_accent>;
+    bindings = <&e_accent>, <&kp F8>;
 )
 
 ZMK_TAP_DANCE(a_tap_dance,
     tapping-term-ms = <200>;
-    bindings = <&kp F11>, <&a_accent>;
+    bindings = <&a_accent>, <&kp F11>;
 )
 
 // tap: copy | double-tap: cut
