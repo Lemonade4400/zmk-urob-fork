@@ -1,8 +1,37 @@
 /*
 
-IMPORTANT: This keymap is optimized for linux and REQUIRES US international layout with SCROLL LOCK as Compose key.
+ACCENTED CHARACTERS (à, è, ì, ò, ù)
+=====================================
+This keymap uses Linux's Compose key to produce Italian accented letters.
+The accent macros (defined in my-macros.dtsi) send: SCROLLLOCK + ' + <vowel>,
+which the OS interprets as a Compose sequence producing a grave accent.
+
+Requirements:
+  1. OS keyboard layout set to "US International" (or any layout that
+     supports Compose sequences for grave accents via ' + vowel).
+  2. SCROLLLOCK mapped as the Compose key in your desktop environment.
+     On GNOME:  Settings → Keyboard → Compose Key → Scroll Lock
+     On KDE:    System Settings → Input Devices → Keyboard → Advanced →
+                Compose key position → Scroll Lock
+     On sway/i3: add `input * xkb_options compose:sclk` to your config.
+
+Limitations:
+  - This method is Linux-only and depends on the DE/WM Compose key config.
+  - It does NOT work on Windows or macOS without additional setup.
+  - Shift + accent macro does NOT produce uppercase (À, È, etc.).
+
+Alternative approach (ZMK_UNICODE_PAIR):
+  Commit 17abaed implemented OS-independent accents using ZMK_UNICODE_PAIR
+  from italian.dtsi, which sends Unicode codepoints directly via:
+    - Linux:   Ctrl+Shift+U + hex (works out-of-the-box in GTK/Qt)
+    - Windows: RAlt+U + hex (requires WinCompose)
+    - macOS:   Alt + hex (requires Unicode Hex Input enabled)
+  This approach supports automatic Shift→uppercase (à→À) and does not
+  depend on Compose key configuration. However, it was reverted because
+  it caused visible flickering during character input.
 
 */
+
 
 
 /* source key position labels */
@@ -19,8 +48,8 @@ IMPORTANT: This keymap is optimized for linux and REQUIRES US international layo
 // #endif
 
 #include "zmk-helpers/helper.h"
-#include "zmk-helpers/unicode-chars/greek.dtsi"
-#include "zmk-helpers/unicode-chars/german.dtsi"
+// #include "zmk-helpers/unicode-chars/greek.dtsi"  // only used by leader.dtsi (disabled)
+// #include "zmk-helpers/unicode-chars/german.dtsi"  // only used by leader.dtsi (disabled)
 
 #define DEF 0
 #define NAV 1
