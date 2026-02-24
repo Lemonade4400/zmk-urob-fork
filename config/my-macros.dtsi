@@ -140,23 +140,6 @@ ZMK_MACRO(alt_shift_quote,
         <&macro_release &kp RSHFT &kp RALT>;
 )
 
-ZMK_MACRO(a_accent,
-    wait-ms = <0>;
-    tap-ms = <5>;
-    bindings = <&kp SCROLLLOCK &kp APOS &kp A>;
-)
-
-ZMK_MACRO(e_accent,
-    wait-ms = <0>;
-    tap-ms = <5>;
-    bindings = <&kp SCROLLLOCK &kp APOS &kp E>;
-)
-
-ZMK_MACRO(i_accent,
-    wait-ms = <0>;
-    tap-ms = <5>;
-    bindings = <&kp SCROLLLOCK &kp APOS &kp I>;
-)
 
 ZMK_MACRO(back,
     wait-ms = <0>;
@@ -176,26 +159,50 @@ ZMK_MACRO(forward,
         <&macro_release &kp LALT>;
 )
 
-ZMK_MACRO(o_accent,
-    wait-ms = <0>;
-    tap-ms = <5>;
-    bindings = <&kp SCROLLLOCK &kp APOS &kp O>;
-)
 
-ZMK_MACRO(u_accent,
-    wait-ms = <0>;
-    tap-ms = <5>;
-    bindings = <&kp SCROLLLOCK &kp APOS &kp U>;
-)
+// Old Compose-key accent macros (replaced by ZMK_UNICODE_PAIR from italian.dtsi).
+// These used Linux's Compose key (mapped to SCROLLLOCK) + dead key sequence to produce
+// accented characters. Required: US International layout + SCROLLLOCK configured as
+// Compose key in the desktop environment. Only worked on Linux with this specific setup.
+//
+// ZMK_MACRO(a_accent,
+//     wait-ms = <0>;
+//     tap-ms = <5>;
+//     bindings = <&kp SCROLLLOCK &kp APOS &kp A>;  // Compose + ' + A = à
+// )
+//
+// ZMK_MACRO(e_accent,
+//     wait-ms = <0>;
+//     tap-ms = <5>;
+//     bindings = <&kp SCROLLLOCK &kp APOS &kp E>;  // Compose + ' + E = è
+// )
+//
+// ZMK_MACRO(i_accent,
+//     wait-ms = <0>;
+//     tap-ms = <5>;
+//     bindings = <&kp SCROLLLOCK &kp APOS &kp I>;  // Compose + ' + I = ì
+// )
+//
+// ZMK_MACRO(o_accent,
+//     wait-ms = <0>;
+//     tap-ms = <5>;
+//     bindings = <&kp SCROLLLOCK &kp APOS &kp O>;  // Compose + ' + O = ò
+// )
+//
+// ZMK_MACRO(u_accent,
+//     wait-ms = <0>;
+//     tap-ms = <5>;
+//     bindings = <&kp SCROLLLOCK &kp APOS &kp U>;  // Compose + ' + U = ù
+// )
 
 ZMK_TAP_DANCE(e_tap_dance,
     tapping-term-ms = <200>;
-    bindings = <&e_accent>, <&kp F8>;
+    bindings = <&it_e_grave>, <&kp F8>;
 )
 
 ZMK_TAP_DANCE(a_tap_dance,
     tapping-term-ms = <200>;
-    bindings = <&a_accent>, <&kp F11>;
+    bindings = <&it_a_grave>, <&kp F11>;
 )
 
 // tap: copy | double-tap: cut
