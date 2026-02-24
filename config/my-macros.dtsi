@@ -204,6 +204,7 @@ ZMK_TAP_DANCE(copy_cut,
     bindings = <&kp LC(INS)>, <&kp LC(X)>;
 )
 
+// not used!
 // tap: < | double-tap: >
 ZMK_TAP_DANCE(less_greater,
     tapping-term-ms = <200>;
