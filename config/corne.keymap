@@ -125,13 +125,13 @@ ZMK_TRI_STATE(c_swapper,
 &mt { MT_CORE };
 ZMK_HOLD_TAP(mt_home, bindings = <&masked_home>, <&kp>; MT_CORE)
 ZMK_HOLD_TAP(mt_end, bindings = <&masked_end>, <&kp>; MT_CORE)
-ZMK_HOLD_TAP(mt_five_up, bindings = <&five_up>, <&kp>; MT_CORE)
-ZMK_HOLD_TAP(mt_five_down, bindings = <&five_down>, <&kp>; MT_CORE)
+ZMK_HOLD_TAP(mt_six_up, bindings = <&six_up>, <&kp>; MT_CORE)
+ZMK_HOLD_TAP(mt_six_down, bindings = <&six_down>, <&kp>; MT_CORE)
 
 #define NAV_LEFT  &mt_home 0   LEFT    // tap: left  | long-tap: beginning of line
 #define NAV_RIGHT &mt_end 0    RIGHT   // tap: right | long-tap: end       of line
-#define NAV_UP    &mt_five_up 0   UP      // tap: up    | long-tap: 5 lines up
-#define NAV_DOWN  &mt_five_down 0 DOWN    // tap: down  | long-tap: 5 lines down
+#define NAV_UP    &mt_six_up 0   UP      // tap: up    | long-tap: 5 lines up
+#define NAV_DOWN  &mt_six_down 0 DOWN    // tap: down  | long-tap: 5 lines down
 #define NAV_BSPC  &mt LC(BSPC) BSPC    // tap: bspc  | long-tap: delete word backward
 #define NAV_DEL   &mt LC(DEL)  DEL     // tap: del   | long-tap: delete word forward
 
