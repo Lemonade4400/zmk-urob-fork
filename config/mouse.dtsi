@@ -1,6 +1,6 @@
 // Settings tuned for 3840 x 2160 display resolution
-#define ZMK_POINTING_DEFAULT_MOVE_VAL 600 // 600
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 20  // 10
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 1800 // default: 600, 3x for max speed
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 40   // default: 10, 2x for max speed
 
 #include <dt-bindings/zmk/pointing.h>
 #include <input/processors.dtsi>
@@ -20,13 +20,9 @@
 };
 
 &mmv_input_listener {
-  warp {
-    layers = <NAV>;
-    input-processors = <&zip_xy_scaler 3 1>;
-  };
   precision {
-    layers = <FN>;
-    input-processors = <&zip_xy_scaler 1 2>;
+    layers = <NAV>;
+    input-processors = <&zip_xy_scaler 1 3>;
   };
 };
 
@@ -41,12 +37,8 @@
 };
 
 &msc_input_listener {
-  warp {
-    layers = <NAV>;
-    input-processors = <&zip_scroll_scaler 2 1>;
-  };
   precision {
-    layers = <FN>;
+    layers = <NAV>;
     input-processors = <&zip_scroll_scaler 1 2>;
   };
 };
