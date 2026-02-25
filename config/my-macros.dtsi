@@ -143,19 +143,19 @@ ZMK_MACRO(alt_shift_quote,
 ZMK_MACRO(a_accent,
     wait-ms = <0>;
     tap-ms = <5>;
-    bindings = <&kp SCROLLLOCK &kp APOS &kp A>;
+    bindings = <&kp SCROLLLOCK &kp APOS &kp A &kp SPACE>;
 )
 
 ZMK_MACRO(e_accent,
     wait-ms = <0>;
     tap-ms = <5>;
-    bindings = <&kp SCROLLLOCK &kp APOS &kp E>;
+    bindings = <&kp SCROLLLOCK &kp APOS &kp E &kp SPACE>;
 )
 
 ZMK_MACRO(i_accent,
     wait-ms = <0>;
     tap-ms = <5>;
-    bindings = <&kp SCROLLLOCK &kp APOS &kp I>;
+    bindings = <&kp SCROLLLOCK &kp APOS &kp I &kp SPACE>;
 )
 
 ZMK_MACRO(back,
@@ -179,13 +179,13 @@ ZMK_MACRO(forward,
 ZMK_MACRO(o_accent,
     wait-ms = <0>;
     tap-ms = <5>;
-    bindings = <&kp SCROLLLOCK &kp APOS &kp O>;
+    bindings = <&kp SCROLLLOCK &kp APOS &kp O &kp SPACE>;
 )
 
 ZMK_MACRO(u_accent,
     wait-ms = <0>;
     tap-ms = <5>;
-    bindings = <&kp SCROLLLOCK &kp APOS &kp U>;
+    bindings = <&kp SCROLLLOCK &kp APOS &kp U &kp SPACE>;
 )
 
 ZMK_TAP_DANCE(e_tap_dance,
