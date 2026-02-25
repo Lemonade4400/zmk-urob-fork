@@ -200,8 +200,15 @@ ZMK_TAP_DANCE(num_dance,
 // smart-mouse, requires PR #1366
 ZMK_TRI_STATE(smart_mouse,
     bindings = <&tog MOUSE>, <&none>, <&tog MOUSE>;
-    ignored-key-positions = <LT1 LT3 RT0 RT1 RT2 RT3 RT4 RM0 RM1 RM2 RM3 RM4 RB1 RB2 RB3 RH0 RH1>;
-    ignored-layers = <MOUSE>;
+    ignored-key-positions = <LT1 LT3 RT0 RT1 RT2 RT3 RT4 RM0 RM1 RM2 RM3 RM4 RB1 RB2 RB3 RH0 RH1 LH0 LH1 RH0>;
+    ignored-layers = <MOUSE NAV FN>;
+)
+
+// hold: FN layer (mouse precision) | tap: left click
+ZMK_HOLD_TAP(lt_mkp,
+    flavor = "balanced";
+    tapping-term-ms = <200>;
+    bindings = <&mo>, <&mkp>;
 )
 
 /* Custom behaviors */
@@ -351,7 +358,7 @@ ZMK_LAYER(mouse,
 //├────────────────┤ ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤          ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤ ├────────────────┤
         ___             ___              ___              ___              ___              ___                         U_WH_D           &mkp MB4         &mkp MCLK        &mkp MB5         U_WH_D              ___
 //╰────────────────╯ ╰────────────────┼────────────────┴────────────────┼────────────────┼────────────────┤          ├────────────────┼────────────────┼────────────────┴────────────────┴────────────────╯ ╰────────────────╯
-                                                          ___              ___              ___                         &mkp LCLK        &mkp RCLK        ___                                            
+                                                          ___              ___              ___                         &lt_mkp FN LCLK  &mkp RCLK        ___                                            
 //                                                     ╰────────────────┴────────────────┴────────────────╯          ╰────────────────┴────────────────┴────────────────╯ 
 )
 
