@@ -301,7 +301,7 @@ ZMK_MACRO_ONE_PARAM(copy_cut_1,
 // tap: copy_cut | hold: activate REV_NUM layer
 ZMK_HOLD_TAP(ht_copy_rev,
     flavor = "tap-preferred";
-    tapping-term-ms = <170>;
+    tapping-term-ms = <130>;
     bindings = <&mo>, <&copy_cut_1>;
 )
 
