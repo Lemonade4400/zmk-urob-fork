@@ -293,6 +293,17 @@ ZMK_MACRO(win_sleep,
 
 #include "code.dtsi"
 
+// 1-cell wrapper around copy_cut (ignores param), needed for hold-tap compatibility
+ZMK_MACRO_ONE_PARAM(copy_cut_1,
+    bindings = <&copy_cut>;
+)
+
+// tap: copy_cut | hold: activate REV_NUM layer
+ZMK_HOLD_TAP(ht_copy_rev,
+    flavor = "balanced";
+    tapping-term-ms = <200>;
+    bindings = <&mo>, <&copy_cut_1>;
+)
 
 /* Keymap */
 
