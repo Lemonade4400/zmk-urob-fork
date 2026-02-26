@@ -204,6 +204,17 @@ ZMK_TRI_STATE(smart_mouse,
     ignored-layers = <MOUSE NAV FN>;
 )
 
+// hold: momentary mouse layer | tap: toggle mouse layer (tap again to exit)
+// 3 mouse speeds come from input processors in mouse.dtsi:
+//   - base speed: MOUSE only
+//   - fast (2x):  MOUSE + NAV (LH0)
+//   - precise (1/2): MOUSE + FN (RH0 hold)
+ZMK_HOLD_TAP(ht_mouse,
+    flavor = "balanced";
+    tapping-term-ms = <200>;
+    bindings = <&mo>, <&tog>;
+)
+
 // hold: FN layer (mouse precision) | tap: left click
 ZMK_HOLD_TAP(lt_mkp,
     flavor = "balanced";
@@ -296,7 +307,7 @@ ZMK_LAYER(base,
     NAV_DEL           &hml LGUI A      &hml LALT S      &hml LCTRL D     &hml LSHFT F     &kp G                       &kp H            &hmr RSHFT J     &hmr LCTRL K     &hmr LALT L      &hmr LGUI SQT        &alt_shift_quote 
 //├────────────────┤ ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤          ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤ ├────────────────┤
 //|      MOUSE     | |       Z        |       X        |       C        |       V        |       B        |          |       N        |       M        |       ,        |       .        |       -        | |      ESC       |
-    &smart_mouse       &kp Z            &kp X            &kp C            &kp V            &kp B                       &kp N            &kp M            &comma_morph     &dot_morph       &kp MINUS           &kp ESC
+    &ht_mouse MOUSE MOUSE &kp Z          &kp X            &kp C            &kp V            &kp B                       &kp N            &kp M            &comma_morph     &dot_morph       &kp MINUS           &kp ESC
 //╰────────────────╯ ╰────────────────┼────────────────┴────────────────┼────────────────┼────────────────┤          ├────────────────┼────────────────┼────────────────┴────────────────┴────────────────╯ ╰────────────────╯
                                                         NAV_LEFT         &smart_shft      &lt_spc NAV 0               &lt FN RET       SMART_NUM        NAV_RIGHT                                            
 //                                                     ╰────────────────┴────────────────┴────────────────╯          ╰────────────────┴────────────────┴────────────────╯ 
@@ -352,7 +363,7 @@ ZMK_LAYER(sys,
 
 ZMK_LAYER(mouse,
 //╭────────────────╮ ╭────────────────┬────────────────┬────────────────┬────────────────┬────────────────╮          ╭────────────────┬────────────────┬────────────────┬────────────────┬────────────────╮ ╭────────────────╮
-        ___             ___              ___              ___              ___              ___                         U_WH_U           U_WH_L           U_MS_U           U_WH_R           U_WH_U              ___
+    &tog MOUSE          ___              ___              ___              ___              ___                         U_WH_U           U_WH_L           U_MS_U           U_WH_R           U_WH_U              ___
 //├────────────────┤ ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤          ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤ ├────────────────┤
         ___             &sk LGUI         &sk LALT         &sk LCTRL        &sk LSHFT        ___                         U_WH_D           U_MS_L           U_MS_D           U_MS_R           U_WH_D              ___
 //├────────────────┤ ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤          ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤ ├────────────────┤
