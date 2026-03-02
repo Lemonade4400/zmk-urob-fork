@@ -315,7 +315,7 @@ ZMK_LAYER(base,
     &kp TAB           &kp Q            &kp W            &kp E            &kp R            &kp T                       &kp Y            &kp U            &kp I            &kp O            &kp P                 NAV_BSPC     
 //├────────────────┤ ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤          ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤ ├────────────────┤
 //|      DEL       | |       A        |       S        |       D        |       F        |       G        |          |       H        |       J        |       K        |       L        |       '        | |       "        |
-    NAV_DEL           &hml LGUI A      &hml LALT S      &hml LCTRL D     &hml LSHFT F     &kp G                       &kp H            &hmr RSHFT J     &hmr LCTRL K     &hmr LALT L      &hmr LGUI SQT        &alt_shift_quote 
+    NAV_DEL           &hml LGUI A      &hml LALT S      &hml LCTRL D     &hml LSHFT F     &kp G                       &kp H            &hmr RSHFT J     &hmr LCTRL K     &hmr LALT L      &hmr LGUI SQT        &kp DQT 
 //├────────────────┤ ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤          ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤ ├────────────────┤
 //|      MOUSE     | |       Z        |       X        |       C        |       V        |       B        |          |       N        |       M        |       ,        |       .        |       -        | |      ESC       |
     &ht_mouse MOUSE MOUSE &kp Z          &kp X            &kp C            &kp V            &kp B                       &kp N            &kp M            &comma_morph     &dot_morph       &kp MINUS           &kp ESC
@@ -352,7 +352,7 @@ ZMK_LAYER(num,
 //╭────────────────╮ ╭────────────────┬────────────────┬────────────────┬────────────────┬────────────────╮          ╭────────────────┬────────────────┬────────────────┬────────────────┬────────────────╮ ╭────────────────╮
         ___             &kp BSLH         &kp N7           &kp N8           &kp N9           &kp EXCLAMATION            &kp HASH         &kp AMPERSAND    &kp LBKT         &kp RBKT         &kp DOLLAR          ___
 //├────────────────┤ ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤          ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤ ├────────────────┤
-        ___             &hml LGUI N0     &hml LALT N4     &hml LCTRL N5    &hml LSHFT N6    &alt_shift_quote           &kp CARET        &hmr RSHFT SINGLE_QUOTE  &hmr LCTRL LPAR  &hmr LALT RPAR  &hmr LGUI GRAVE     ___
+        ___             &hml LGUI N0     &hml LALT N4     &hml LCTRL N5    &hml LSHFT N6    &kp DQT           &kp CARET        &hmr RSHFT SINGLE_QUOTE  &hmr LCTRL LPAR  &hmr LALT RPAR  &hmr LGUI GRAVE     ___
 //├────────────────┤ ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤          ├────────────────┼────────────────┼────────────────┼────────────────┼────────────────┤ ├────────────────┤
         ___             &kp N0           &kp N1           &kp N2           &kp N3           &kp QMARK                  &kp LS(COMMA)    &kp LS(DOT)      &kp LEFT_BRACE   &kp RIGHT_BRACE  &kp AT_SIGN         ___
 //╰────────────────╯ ╰────────────────┼────────────────┴────────────────┼────────────────┼────────────────┤          ├────────────────┼────────────────┼────────────────┴────────────────┴────────────────╯ ╰────────────────╯
