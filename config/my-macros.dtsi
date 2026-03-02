@@ -17,10 +17,10 @@ ZMK_MACRO(four_down,
     bindings = <&kp DOWN &kp DOWN &kp DOWN &kp DOWN>;
 )
 
-ZMK_MACRO(six_down,
+ZMK_MACRO(eight_down,
     wait-ms = <0>;
     tap-ms = <5>;
-    bindings = <&kp DOWN &kp DOWN &kp DOWN &kp DOWN &kp DOWN &kp DOWN>;
+    bindings = <&kp DOWN &kp DOWN &kp DOWN &kp DOWN &kp DOWN &kp DOWN &kp DOWN &kp DOWN>;
 )
 
 ZMK_MACRO(double_up,
@@ -41,10 +41,10 @@ ZMK_MACRO(four_up,
     bindings = <&kp UP &kp UP &kp UP &kp UP>;
 )
 
-ZMK_MACRO(six_up,
+ZMK_MACRO(eight_up,
     wait-ms = <0>;
     tap-ms = <5>;
-    bindings = <&kp UP &kp UP &kp UP &kp UP &kp UP &kp UP>;
+    bindings = <&kp UP &kp UP &kp UP &kp UP &kp UP &kp UP &kp UP &kp UP>;
 )
 
 ZMK_MACRO(one_left,
@@ -131,14 +131,15 @@ ZMK_MACRO(four_right,
         <&macro_release &kp LCTRL>;
 )
 
-ZMK_MACRO(alt_shift_quote,
-    wait-ms = <0>;
-    tap-ms = <10>;
-    bindings = 
-        <&macro_press &kp RSHFT &kp RALT>,
-        <&macro_tap &kp SQT>,
-        <&macro_release &kp RSHFT &kp RALT>;
-)
+// not in use anymore for double quote
+// ZMK_MACRO(alt_shift_quote,
+//     wait-ms = <0>;
+//     tap-ms = <10>;
+//     bindings = 
+//         <&macro_press &kp RSHFT &kp RALT>,
+//         <&macro_tap &kp SQT>,
+//         <&macro_release &kp RSHFT &kp RALT>;
+// )
 
 ZMK_MACRO(a_accent,
     wait-ms = <0>;

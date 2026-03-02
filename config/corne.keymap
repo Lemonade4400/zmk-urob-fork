@@ -7,8 +7,8 @@ The accent macros (defined in my-macros.dtsi) send: SCROLLLOCK + ' + <vowel>,
 which the OS interprets as a Compose sequence producing a grave accent.
 
 Requirements:
-  1. OS keyboard layout set to "US International" (or any layout that
-     supports Compose sequences for grave accents via ' + vowel).
+  1. OS keyboard layout set to "US" (plain, NOT "US International" which
+     has dead keys that interfere with quote/apostrophe).
   2. SCROLLLOCK mapped as the Compose key in your desktop environment.
      On GNOME:  Settings → Keyboard → Compose Key → Scroll Lock
      On KDE:    System Settings → Input Devices → Keyboard → Advanced →
@@ -154,13 +154,13 @@ ZMK_TRI_STATE(c_swapper,
 &mt { MT_CORE };
 ZMK_HOLD_TAP(mt_home, bindings = <&masked_home>, <&kp>; MT_CORE)
 ZMK_HOLD_TAP(mt_end, bindings = <&masked_end>, <&kp>; MT_CORE)
-ZMK_HOLD_TAP(mt_six_up, bindings = <&six_up>, <&kp>; MT_CORE)
-ZMK_HOLD_TAP(mt_six_down, bindings = <&six_down>, <&kp>; MT_CORE)
+ZMK_HOLD_TAP(mt_eight_up, bindings = <&eight_up>, <&kp>; MT_CORE)
+ZMK_HOLD_TAP(mt_eight_down, bindings = <&eight_down>, <&kp>; MT_CORE)
 
 #define NAV_LEFT  &mt_home 0   LEFT    // tap: left  | long-tap: beginning of line
 #define NAV_RIGHT &mt_end 0    RIGHT   // tap: right | long-tap: end       of line
-#define NAV_UP    &mt_six_up 0   UP      // tap: up    | long-tap: 5 lines up
-#define NAV_DOWN  &mt_six_down 0 DOWN    // tap: down  | long-tap: 5 lines down
+#define NAV_UP    &mt_eight_up 0   UP    // tap: up    | long-tap: 8 lines up
+#define NAV_DOWN  &mt_eight_down 0 DOWN  // tap: down  | long-tap: 8 lines down
 #define NAV_BSPC  &mt LC(BSPC) BSPC    // tap: bspc  | long-tap: delete word backward
 #define NAV_DEL   &mt LC(DEL)  DEL     // tap: del   | long-tap: delete word forward
 
