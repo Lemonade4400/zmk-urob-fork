@@ -135,6 +135,16 @@ ZMK_MACRO(focus_chat,                   // focus the chat panel
         <&macro_release &kp LCTRL>;
 ) 
 
+ZMK_MACRO(oc_agent_down,                 // ctrl+x then down-arrow
+    wait-ms = <0>;
+    tap-ms = <10>;
+    bindings = 
+        <&macro_press &kp LCTRL>,
+        <&macro_tap &kp X>,
+        <&macro_release &kp LCTRL>,
+        <&macro_tap &kp DOWN>;
+)
+
 ZMK_MACRO(oc_agent_left,                 // ctrl+x then left-arrow
     wait-ms = <0>;
     tap-ms = <10>;
