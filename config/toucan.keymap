@@ -1,0 +1,2 @@
+/* Toucan uses the same 42-key matrix as Corne — reuse the full keymap. */
+#include "corne.keymap"

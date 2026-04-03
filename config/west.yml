@@ -30,6 +30,8 @@ manifest:
       url-base: https://github.com/GPeye # https://github.com/GPeye/hammerbeam-slideshow
     - name: t-ogura
       url-base: https://github.com/t-ogura
+    - name: geeksville
+      url-base: https://github.com/geeksville
 
   projects:
     - name: zmk
@@ -55,6 +57,9 @@ manifest:
       revision: v2.0.0
     - name: zmk-unicode
       path: modules/zmk/unicode
+    - name: cirque-input-module
+      remote: geeksville
+      revision: toucan
 
     # Only source necessary Zephyr modules. Remove this entire section to restore
     # the default (needed for less common hardware).
