@@ -16,7 +16,6 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 #include <zmk/events/usb_conn_state_changed.h>
 #include <zmk/event_manager.h>
 #include <zmk/events/battery_state_changed.h>
-#include <zmk/split/bluetooth/central.h>
 #include <zmk/events/ble_active_profile_changed.h>
 #include <zmk/events/endpoint_changed.h>
 #include <zmk/events/wpm_state_changed.h>
@@ -345,8 +344,10 @@ static void peripheral_battery_status_update_cb(struct peripheral_battery_status
 
 static struct peripheral_battery_status_state
 peripheral_battery_status_get_state(const zmk_event_t *eh) {
+    const struct zmk_peripheral_battery_state_changed *ev =
+        as_zmk_peripheral_battery_state_changed(eh);
     return (struct peripheral_battery_status_state){
-        .level = zmk_split_get_peripheral_battery_level(0),
+        .level = (ev != NULL) ? ev->state_of_charge : 0,
     };
 }
 
@@ -355,7 +356,7 @@ ZMK_DISPLAY_WIDGET_LISTENER(widget_peripheral_battery_status,
                             peripheral_battery_status_update_cb,
                             peripheral_battery_status_get_state)
 
-ZMK_SUBSCRIPTION(widget_peripheral_battery_status, zmk_battery_state_changed);
+ZMK_SUBSCRIPTION(widget_peripheral_battery_status, zmk_peripheral_battery_state_changed);
 
 static void set_output_status(struct zmk_widget_status *widget,
                               const struct output_status_state *state) {
