@@ -50,6 +50,30 @@ void draw_battery(lv_obj_t *canvas, const struct status_state *state) {
     lv_canvas_draw_text(canvas, 37, 0, 60, &label_dsc, charge_text);
 }
 
+void draw_peripheral_battery(lv_obj_t *canvas, const struct status_state *state) {
+    lv_draw_label_dsc_t label_dsc;
+    init_label_dsc(&label_dsc, LVGL_FOREGROUND, &lv_font_montserrat_16, LV_TEXT_ALIGN_LEFT);
+
+    lv_draw_rect_dsc_t rect_black_dsc;
+    init_rect_dsc(&rect_black_dsc, LVGL_BACKGROUND);
+    lv_draw_rect_dsc_t rect_white_dsc;
+    init_rect_dsc(&rect_white_dsc, LVGL_FOREGROUND);
+
+    // Draw "R:" label
+    lv_canvas_draw_text(canvas, 75, 0, 20, &label_dsc, "R");
+
+    // Draw battery icon at x=90
+    lv_canvas_draw_rect(canvas, 90, 2, 29, 12, &rect_white_dsc);
+    lv_canvas_draw_rect(canvas, 91, 3, 27, 10, &rect_black_dsc);
+    lv_canvas_draw_rect(canvas, 92, 4, (state->peripheral_battery + 2) / 4, 8, &rect_white_dsc);
+    lv_canvas_draw_rect(canvas, 120, 5, 3, 6, &rect_white_dsc);
+    lv_canvas_draw_rect(canvas, 121, 6, 1, 4, &rect_black_dsc);
+
+    char charge_text[6] = {};
+    snprintf(charge_text, sizeof(charge_text), "%d%%", state->peripheral_battery);
+    lv_canvas_draw_text(canvas, 126, 0, 40, &label_dsc, charge_text);
+}
+
 void init_label_dsc(lv_draw_label_dsc_t *label_dsc, lv_color_t color, const lv_font_t *font,
                     lv_text_align_t align) {
     lv_draw_label_dsc_init(label_dsc);

@@ -16,6 +16,7 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 #include <zmk/events/usb_conn_state_changed.h>
 #include <zmk/event_manager.h>
 #include <zmk/events/battery_state_changed.h>
+#include <zmk/split/bluetooth/central.h>
 #include <zmk/events/ble_active_profile_changed.h>
 #include <zmk/events/endpoint_changed.h>
 #include <zmk/events/wpm_state_changed.h>
@@ -65,8 +66,9 @@ static void draw_top(lv_obj_t *widget, lv_color_t cbuf[], const struct status_st
     // Fill background
     lv_canvas_draw_rect(canvas, 0, 0, CANVAS_SIZE, CANVAS_SIZE, &rect_black_dsc);
 
-    // Draw battery
+    // Draw battery (local + peripheral)
     draw_battery(canvas, state);
+    draw_peripheral_battery(canvas, state);
 
     // Draw output status
     char output_text[10] = {};
@@ -324,6 +326,37 @@ ZMK_SUBSCRIPTION(widget_battery_status, zmk_battery_state_changed);
 ZMK_SUBSCRIPTION(widget_battery_status, zmk_usb_conn_state_changed);
 #endif /* IS_ENABLED(CONFIG_USB_DEVICE_STACK) */
 
+struct peripheral_battery_status_state {
+    uint8_t level;
+};
+
+static void set_peripheral_battery_status(struct zmk_widget_status *widget,
+                                          struct peripheral_battery_status_state state) {
+    widget->state.peripheral_battery = state.level;
+    draw_top(widget->obj, widget->cbuf, &widget->state);
+}
+
+static void peripheral_battery_status_update_cb(struct peripheral_battery_status_state state) {
+    struct zmk_widget_status *widget;
+    SYS_SLIST_FOR_EACH_CONTAINER(&widgets, widget, node) {
+        set_peripheral_battery_status(widget, state);
+    }
+}
+
+static struct peripheral_battery_status_state
+peripheral_battery_status_get_state(const zmk_event_t *eh) {
+    return (struct peripheral_battery_status_state){
+        .level = zmk_split_get_peripheral_battery_level(0),
+    };
+}
+
+ZMK_DISPLAY_WIDGET_LISTENER(widget_peripheral_battery_status,
+                            struct peripheral_battery_status_state,
+                            peripheral_battery_status_update_cb,
+                            peripheral_battery_status_get_state)
+
+ZMK_SUBSCRIPTION(widget_peripheral_battery_status, zmk_battery_state_changed);
+
 static void set_output_status(struct zmk_widget_status *widget,
                               const struct output_status_state *state) {
     widget->state.selected_endpoint = state->selected_endpoint;
@@ -419,6 +452,7 @@ int zmk_widget_status_init(struct zmk_widget_status *widget, lv_obj_t *parent) {
 
     sys_slist_append(&widgets, &widget->node);
     widget_battery_status_init();
+    widget_peripheral_battery_status_init();
     widget_output_status_init();
     widget_layer_status_init();
     widget_wpm_status_init();
