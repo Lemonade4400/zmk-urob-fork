@@ -32,6 +32,8 @@ manifest:
       url-base: https://github.com/t-ogura
     - name: geeksville
       url-base: https://github.com/geeksville
+    - name: MickiusMousius
+      url-base: https://github.com/MickiusMousius
 
   projects:
     - name: zmk
@@ -60,6 +62,9 @@ manifest:
     - name: cirque-input-module
       remote: geeksville
       revision: toucan
+    - name: zmk-ls0xxvcom-driver
+      remote: MickiusMousius
+      revision: main
 
     # Only source necessary Zephyr modules. Remove this entire section to restore
     # the default (needed for less common hardware).

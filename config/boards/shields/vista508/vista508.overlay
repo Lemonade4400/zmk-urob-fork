@@ -6,9 +6,11 @@
 
 &nice_view_spi {
     status = "okay";
-    nice_view: ls0xx@0 {
-        compatible = "sharp,ls0xx";
+    vista508: ls0xx@0 {
+        compatible = "sharp,ls0xx-vcom";
         spi-max-frequency = <1000000>;
+        serial-vcom-inversion;
+        serial-vcom-interval = <17>;
         reg = <0>;
         width = <144>;
         height = <168>;
@@ -17,6 +19,6 @@
 
 / {
     chosen {
-        zephyr,display = &nice_view;
+        zephyr,display = &vista508;
     };
 };

@@ -23,6 +23,6 @@ include:
   - board: nice_nano_v2
     shield: corne_right nice_view_adapter nice_view_custom # https://github.com/GPeye/hammerbeam-slideshow
   - board: seeeduino_xiao_ble
-    shield: toucan_left nice_view_gem
+    shield: toucan_left vista508
   - board: seeeduino_xiao_ble
     shield: toucan_right

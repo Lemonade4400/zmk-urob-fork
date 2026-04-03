@@ -1,8 +1,8 @@
 file_format: "1"
-id: nice_view_gem
-name: nice!view_gem
+id: vista508
+name: Vista508
 type: shield
-url: https://nicekeyboards.com/nice-view
+url: https://keydio.io
 requires: [nice_view_header]
 features:
   - display
