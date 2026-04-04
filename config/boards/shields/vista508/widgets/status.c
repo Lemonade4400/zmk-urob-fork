@@ -179,63 +179,10 @@ static void draw_middle(lv_obj_t *widget, lv_color_t cbuf[], const struct status
     // Fill background
     lv_canvas_draw_rect(canvas, 0, 0, CANVAS_SIZE, CANVAS_SIZE, &rect_black_dsc);
 
-    bool usingUsb = false;
-    bool profileConnected = false;
-    bool profileAdvertising = false;
-    if (state->selected_endpoint.transport == ZMK_TRANSPORT_USB) {
-        usingUsb = true;
-    }
-    if (state->active_profile_bonded) {
-        if (state->active_profile_connected) {
-            profileConnected = true;
-        }
-    } else {
-        profileAdvertising = true;
-    }
- 
-    if (usingUsb) {
-        // Draw the pill outline
-        lv_canvas_draw_arc(canvas, 15, 14, 13, 90, 270, &arc_dsc);
-        lv_canvas_draw_arc(canvas, 95, 14, 13, 270, 90, &arc_dsc);
-        lv_point_t points[2];
-        points[0].x = 15;
-        points[0].y = 2;
-        points[1].x = 95;
-        points[1].y = 2;
-        lv_canvas_draw_line(canvas, points, 2, &line_dsc);
-        points[0].y = 26;
-        points[1].y = 26;
-        lv_canvas_draw_line(canvas, points, 2, &line_dsc);
-        // Draw the pill fill
-        lv_canvas_draw_arc(canvas, 15, 14, 9, 0, 359, &arc_dsc_filled);
-        lv_canvas_draw_arc(canvas, 95, 14, 9, 0, 359, &arc_dsc_filled);
-        lv_canvas_draw_rect(canvas, 15, 5, 80, 18, &rect_white_dsc);
-        // Draw the label
-        lv_canvas_draw_text(canvas, 5, 4, 100, &label_dsc_black, "USB Out");
-        // Draw the current profile indicator
-        uint8_t xOffset = 129;
-        uint8_t yOffset = 14;
-        char profileNumber[4] = {};
-        sprintf(profileNumber, "%d", (uint8_t)state->active_profile_index + 1);
-        if (profileConnected) {
-            lv_canvas_draw_arc(canvas, xOffset, yOffset, 13, 0, 359, &arc_dsc);
-            lv_canvas_draw_arc(canvas, xOffset, yOffset, 9, 0, 359, &arc_dsc_filled);
-            lv_canvas_draw_text(canvas, xOffset - 8, yOffset - 11, 16, &label_dsc_black, profileNumber);
-        }
-        else if (profileAdvertising) {
-            lv_canvas_draw_text(canvas, xOffset - 8, yOffset - 15, 16, &status_dsc, LV_SYMBOL_SETTINGS);
-            lv_canvas_draw_arc(canvas, xOffset, yOffset, 9, 0, 359, &arc_dsc_filled);
-            lv_canvas_draw_text(canvas, xOffset - 8, yOffset - 11, 16, &label_dsc_black, profileNumber);
-        }
-        else {
-            lv_canvas_draw_arc(canvas, xOffset, yOffset, 13, 0, 359, &arc_dsc_thin);
-            lv_canvas_draw_arc(canvas, xOffset, yOffset, 10, 0, 359, &arc_dsc_thin);
-            lv_canvas_draw_text(canvas, xOffset - 8, yOffset - 11, 16, &label_dsc, profileNumber);
-        }
-        return;
-    }
+    bool profileConnected = state->active_profile_bonded && state->active_profile_connected;
+    bool profileAdvertising = !state->active_profile_bonded;
 
-    // Draw circles
+    // Draw 5 BT profile circles
     uint8_t xOffset = 15;
     uint8_t yOffset = 15;
     for (int i = 0; i < 5; i++) {
@@ -265,7 +212,7 @@ static void draw_middle(lv_obj_t *widget, lv_color_t cbuf[], const struct status
             lv_canvas_draw_arc(canvas, xOffset, yOffset, 13, 0, 359, &arc_dsc);
             lv_canvas_draw_text(canvas, xOffset - 8, yOffset - 11, 16, &label_dsc, label);
         }
-        xOffset +=29;
+        xOffset += 29;
     }
 }
 
