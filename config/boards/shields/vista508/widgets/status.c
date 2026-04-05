@@ -182,9 +182,9 @@ static void draw_middle(lv_obj_t *widget, lv_color_t cbuf[], const struct status
     bool profileConnected = state->active_profile_bonded && state->active_profile_connected;
     bool profileAdvertising = !state->active_profile_bonded;
 
-    // Draw 5 BT profile circles (compact for bottom row)
+    // Draw 5 BT profile circles
     uint8_t xOffset = 15;
-    uint8_t yOffset = 13;
+    uint8_t yOffset = 15;
     for (int i = 0; i < 5; i++) {
         bool selected = i == state->active_profile_index;
 
@@ -193,22 +193,23 @@ static void draw_middle(lv_obj_t *widget, lv_color_t cbuf[], const struct status
 
         if (selected) {
             if (profileAdvertising) {
-                lv_canvas_draw_arc(canvas, xOffset, yOffset, 7, 0, 359, &arc_dsc_filled);
+                lv_canvas_draw_text(canvas, xOffset - 8, yOffset - 15, 16, &status_dsc, LV_SYMBOL_SETTINGS);
+                lv_canvas_draw_arc(canvas, xOffset, yOffset, 9, 0, 359, &arc_dsc_filled);
                 lv_canvas_draw_text(canvas, xOffset - 8, yOffset - 11, 16, &label_dsc_black, label);
             }
             else if (profileConnected) {
-                lv_canvas_draw_arc(canvas, xOffset, yOffset, 11, 0, 359, &arc_dsc);
-                lv_canvas_draw_arc(canvas, xOffset, yOffset, 7, 0, 359, &arc_dsc_filled);
+                lv_canvas_draw_arc(canvas, xOffset, yOffset, 13, 0, 359, &arc_dsc);
+                lv_canvas_draw_arc(canvas, xOffset, yOffset, 9, 0, 359, &arc_dsc_filled);
                 lv_canvas_draw_text(canvas, xOffset - 8, yOffset - 11, 16, &label_dsc_black, label);
             }
             else {
-                lv_canvas_draw_arc(canvas, xOffset, yOffset, 11, 0, 359, &arc_dsc_thin);
-                lv_canvas_draw_arc(canvas, xOffset, yOffset, 8, 0, 359, &arc_dsc_thin);
+                lv_canvas_draw_arc(canvas, xOffset, yOffset, 13, 0, 359, &arc_dsc_thin);
+                lv_canvas_draw_arc(canvas, xOffset, yOffset, 10, 0, 359, &arc_dsc_thin);
                 lv_canvas_draw_text(canvas, xOffset - 8, yOffset - 11, 16, &label_dsc, label);
             }
         }
         else {
-            lv_canvas_draw_arc(canvas, xOffset, yOffset, 11, 0, 359, &arc_dsc);
+            lv_canvas_draw_arc(canvas, xOffset, yOffset, 13, 0, 359, &arc_dsc);
             lv_canvas_draw_text(canvas, xOffset - 8, yOffset - 11, 16, &label_dsc, label);
         }
         xOffset += 29;
