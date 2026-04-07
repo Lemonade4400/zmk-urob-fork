@@ -7,5 +7,11 @@ zephyr
 zmk
 draw/base.yaml
 
+# West modules (downloaded by `west update`)
+cirque-input-module
+hammerbeam-slideshow
+prospector-zmk-module
+zmk-ls0xxvcom-driver
+
 # Generated at build time (never commit)
 config/password-macro.dtsi

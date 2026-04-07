@@ -1,2 +1,40 @@
 /* Toucan uses the same 42-key matrix as Corne — reuse the full keymap. */
+#include <dt-bindings/zmk/pointing.h>
+#include <dt-bindings/input/input-event-codes.h>
+
 #include "corne.keymap"
+
+// Override the glidepoint_listener to add touch-processor on base layer
+&glidepoint_listener {
+    status = "okay";
+
+    // On NAV/FN layers, touchpad acts as scrollpad
+    scroller {
+        layers = <NAV FN>;
+        input-processors = <
+            &zip_xy_to_scroll_mapper
+            &zip_scroll_scaler 1 5
+            &zip_scroll_transform INPUT_TRANSFORM_X_INVERT
+        >;
+    };
+
+    // On base layer, detect finger touch to activate mouse layer
+    base {
+        layers = <DEF>;
+        input-processors = <
+            &touch_processor
+        >;
+    };
+};
+
+/ {
+    input_processors {
+        touch_processor: touch_processor {
+            compatible = "zmk,input-processor-behaviors";
+            #input-processor-cells = <0>;
+
+            codes = <INPUT_BTN_TOUCH>;      // fired by modified cirque driver on finger down/up
+            bindings = <&mo MOUSE>;          // activate mouse layer while finger is on touchpad
+        };
+    };
+};
