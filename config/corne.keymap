@@ -321,7 +321,7 @@ ZMK_LAYER(base,
 //|      MOUSE     | |       Z        |       X        |       C        |       V        |       B        |          |       N        |       M        |       ,        |       .        |       -        | |      ESC       |
     &ht_mouse MOUSE MOUSE &kp Z          &kp X            &kp C            &kp V            &kp B                       &kp N            &kp M            &comma_morph     &dot_morph       &kp MINUS           &kp ESC
 //╰────────────────╯ ╰────────────────┼────────────────┴────────────────┼────────────────┼────────────────┤          ├────────────────┼────────────────┼────────────────┴────────────────┴────────────────╯ ╰────────────────╯
-                                                        NAV_LEFT         &smart_shft      &lt_spc NAV 0               &lt FN RET       SMART_NUM        NAV_RIGHT                                            
+                                                        NAV_LEFT         &smart_shft      &lt_spc NAV 0               &lt FN RET       SMART_NUM        NAV_RIGHT
 //                                                     ╰────────────────┴────────────────┴────────────────╯          ╰────────────────┴────────────────┴────────────────╯ 
 )
     
