@@ -8,13 +8,13 @@
 &glidepoint_listener {
     status = "okay";
 
-    // On NAV/FN layers, touchpad acts as scrollpad
+    // On NAV/FN/MSCRL layers, touchpad acts as scrollpad
     scroller {
-        layers = <NAV FN>;
+        layers = <NAV FN MSCRL>;
         input-processors = <
             &zip_xy_to_scroll_mapper
             &zip_scroll_scaler 1 5
-            &zip_scroll_transform INPUT_TRANSFORM_X_INVERT
+            &zip_scroll_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)
         >;
     };
 
