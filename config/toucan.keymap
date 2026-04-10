@@ -8,10 +8,25 @@
 &glidepoint_listener {
     status = "okay";
 
-    // On NAV/FN/MSCRL layers, touchpad acts as scrollpad
+    // On NAV/FN layers, touchpad acts as scrollpad
     scroller {
-        layers = <NAV FN MSCRL>;
+        layers = <NAV FN>;
         input-processors = <
+            &zip_xy_to_scroll_mapper
+            &zip_scroll_scaler 1 5
+            &zip_scroll_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)
+        >;
+    };
+
+    // On MSCRL (hold-G), same scroll chain but also run touch_processor so
+    // that the BTN_TOUCH release propagates &mo MOUSE deactivation. This
+    // handles the race where finger touches the pad during lt_mscrl's
+    // undecided window (MOUSE gets pressed via base block) and is then lifted
+    // after MSCRL has already taken over.
+    scroller_mscrl {
+        layers = <MSCRL>;
+        input-processors = <
+            &touch_processor
             &zip_xy_to_scroll_mapper
             &zip_scroll_scaler 1 5
             &zip_scroll_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)
