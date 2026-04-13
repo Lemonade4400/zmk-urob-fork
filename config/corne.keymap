@@ -223,13 +223,14 @@ ZMK_HOLD_TAP(lt_mkp,
     bindings = <&mo>, <&mkp>;
 )
 
-// hold: MSCRL layer (activates on any other key press) | tap: G
-// hold-preferred avoids the 200ms tap lag during normal typing while still
-// enabling scroll when G is held before touching the trackpad
+// hold: MSCRL layer | tap: G
+// balanced + require-prior-idle: during fast typing G taps instantly (no lag),
+// hold-tap only engages after an idle pause (i.e. when you deliberately hold G)
 ZMK_HOLD_TAP(lt_mscrl,
-    flavor = "hold-preferred";
+    flavor = "balanced";
     tapping-term-ms = <200>;
     quick-tap-ms = <QUICK_TAP_MS>;
+    require-prior-idle-ms = <150>;
     bindings = <&mo>, <&kp>;
 )
 
