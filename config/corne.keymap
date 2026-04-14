@@ -143,6 +143,13 @@ ZMK_TRI_STATE(c_swapper,
     ZMK_MACRO(type_password, bindings = <&none>;)
 #endif
 
+// Commit hash macro (generated at build time in private repo)
+#if __has_include("commit-macro.dtsi")
+    #include "commit-macro.dtsi"
+#else
+    ZMK_MACRO(type_commit, bindings = <&none>;)
+#endif
+
 /* Nav cluster */
 
 // long-tap action on hold, short-tap action on all interrupts
