@@ -15,3 +15,4 @@ zmk-ls0xxvcom-driver
 
 # Generated at build time (never commit)
 config/password-macro.dtsi
+config/commit-macro.dtsi

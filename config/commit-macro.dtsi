@@ -1,6 +1,0 @@
-// Auto-generated at build time - do not edit or commit
-ZMK_MACRO(type_commit,
-    wait-ms = <10>;
-    tap-ms = <10>;
-    bindings = <&kp N7 &kp N3 &kp B &kp A &kp N1 &kp D &kp A &kp N2 &kp D &kp B &kp F &kp E &kp N1 &kp D &kp N6 &kp N6 &kp N6 &kp N5 &kp N0 &kp N2 &kp N2 &kp D &kp N6 &kp N5 &kp N7 &kp N6 &kp N7 &kp N7 &kp N9 &kp A &kp N5 &kp N6 &kp A &kp A &kp N8 &kp B &kp N7 &kp B &kp E &kp F>;
-)
