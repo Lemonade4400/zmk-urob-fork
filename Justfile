@@ -30,8 +30,26 @@ _build_single $board $shield $snippet $artifact *west_args:
         mkdir -p "{{ out }}" && cp "$build_dir/zephyr/zmk.bin" "{{ out }}/$artifact.bin"
     fi
 
+# generate config/password-macro.dtsi from $ZMK_PASSWORD or the macOS keychain
+password:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    out="{{ config }}/password-macro.dtsi"
+    pw="${ZMK_PASSWORD:-}"
+    if [[ -z "$pw" ]] && command -v security >/dev/null 2>&1; then
+        pw=$(security find-generic-password -s zmk-password -w 2>/dev/null || true)
+    fi
+    if [[ -z "$pw" ]]; then
+        echo "No password found: set ZMK_PASSWORD or add a 'zmk-password' keychain item." >&2
+        echo "Building with &type_password as a no-op." >&2
+        rm -f "$out"
+        exit 0
+    fi
+    printf '%s' "$pw" | python3 {{ justfile_directory() / 'scripts/gen-macro.py' }} type_password >"$out"
+    echo "Generated $out ($(printf '%s' "$pw" | wc -c | tr -d ' ') chars)"
+
 # build firmware for matching targets
-build expr *west_args:
+build expr *west_args: password
     #!/usr/bin/env bash
     set -euo pipefail
     targets=$(just _parse_targets {{ expr }})
@@ -44,6 +62,7 @@ build expr *west_args:
 # clear build cache and artifacts
 clean:
     rm -rf {{ build }} {{ out }}
+    rm -f {{ config }}/password-macro.dtsi
 
 # clear all automatically generated files
 clean-all: clean
